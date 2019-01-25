@@ -19,10 +19,11 @@ describe('<SearchInput />', () => {
 			<input
 				value={instance.state.searchTerm}
 				onKeyPress={instance.handleChange}
+				onKeyDown={instance.handleKeyDown}
 				onChange={instance.handleChange}
 				placeholder="Search a city"
 				type="text" />
-			<button onClick={instance.handleButtonClick}>Search</button>
+			<button onClick={instance.onSubmit}>Search</button>
 		</div>;
 		expect(wrapper.contains(searchInput)).toEqual(true);
 	});
