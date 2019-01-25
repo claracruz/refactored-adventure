@@ -8,9 +8,13 @@
     font-size: calc(5px + 1vmin);
 }
 
+.App .error {
+    margin: 10px auto 0;
+}
+
 .App .weather-grid {
     width: 80%;
-    margin: 40px auto;
+    margin: 20px auto;
 }
 
 .App .error {

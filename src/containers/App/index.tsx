@@ -42,6 +42,10 @@ export class App extends PureComponent<IAppComponentProps> {
 				</header>
 				<section>
 					<SearchInput onSearch={this.onSearch} />
+					{
+						error &&
+						<div className="error">{error}</div>
+					}
 					<Grid
 						className="weather-grid"
 						items={weather} />
@@ -49,10 +53,6 @@ export class App extends PureComponent<IAppComponentProps> {
 				{
 					loading &&
 					<Loading />
-				}
-				{
-					error &&
-					<div className="error">{error}</div>
 				}
 			</div>
 		);

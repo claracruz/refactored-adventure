@@ -13,6 +13,7 @@ describe('<App />', () => {
 
 	beforeEach(() => {
 		props = {
+			error: '',
 			loading: false,
 			weather: [],
 			onSearch: jest.fn()
