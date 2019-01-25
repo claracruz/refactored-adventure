@@ -1,0 +1,18 @@
+.App {
+    text-align: center;
+}
+
+.App .App-header {
+    display: flex;
+    flex-direction: column;
+    font-size: calc(5px + 1vmin);
+}
+
+.App .weather-grid {
+    width: 80%;
+    margin: 40px auto;
+}
+
+.App .error {
+    color: red;
+}
