@@ -15,7 +15,7 @@ export class SearchInput extends PureComponent<ISearchComponentProps, ISearchCom
 		}
 	}
 
-	handleButtonClick = () => {
+	onSubmit = () => {
 		this.props.onSearch(this.state.searchTerm);
 		this.setState({
 			searchTerm: ''
@@ -28,16 +28,23 @@ export class SearchInput extends PureComponent<ISearchComponentProps, ISearchCom
 		});
 	};
 
+	handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		if (e.key === 'Enter') {
+			this.onSubmit();
+		}
+	};
+
 	render() {
 		return (
 			<div className="search-input">
 				<input
 					value={this.state.searchTerm}
 					onKeyPress={this.handleChange}
+					onKeyDown={this.handleKeyDown}
 					onChange={this.handleChange}
 					placeholder="Search a city"
 					type="text" />
-				<button onClick={this.handleButtonClick}>Search</button>
+				<button onClick={this.onSubmit}>Search</button>
 			</div>
 		);
 	}
