@@ -43,7 +43,7 @@ export class App extends PureComponent<IAppComponentProps> {
 				<section>
 					<SearchInput onSearch={this.onSearch} />
 					{
-						error &&
+						error !== '' &&
 						<div className="error">{error}</div>
 					}
 					<Grid
