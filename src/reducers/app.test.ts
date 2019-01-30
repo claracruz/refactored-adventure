@@ -1,18 +1,22 @@
+import { IActionFetchWeatherData } from '../interfaces/weather';
 import { appReducer } from './app';
 import {
-	APP_INITIAL_STATE, RECEIVE_WEATHER_DATA,
-	REQUEST_WEATHER_DATA
+	actionTypes,
+	APP_INITIAL_STATE
 } from '../constants';
 
 
 describe('app reducer', () => {
 	it('should return the initial state', () => {
-		expect(appReducer(undefined, {})).toEqual(APP_INITIAL_STATE);
+		expect(appReducer(undefined, {} as IActionFetchWeatherData)).toEqual(APP_INITIAL_STATE);
 	});
 
 	it('should handle REQUEST_WEATHER_DATA', () => {
-		const startAction = {
-			type: REQUEST_WEATHER_DATA
+		const startAction : IActionFetchWeatherData = {
+			type: actionTypes.REQUEST_WEATHER_DATA,
+			text: '',
+			data: {},
+			error: null
 		};
 		expect(appReducer(APP_INITIAL_STATE, startAction)).toEqual({
 			error: '',
@@ -22,8 +26,10 @@ describe('app reducer', () => {
 	});
 
 	it('should handle RECEIVE_WEATHER_DATA', () => {
-		const startAction = {
-			type: RECEIVE_WEATHER_DATA,
+		const startAction: IActionFetchWeatherData = {
+			type: actionTypes.RECEIVE_WEATHER_DATA,
+			text: '',
+			error: null,
 			data: {
 				city: { name: 'leeds', country: 'GB' },
 				list: [
@@ -53,8 +59,10 @@ describe('app reducer', () => {
 			{ dt: 1548460800, main: { temp: 20.37 }},
 			{ dt: 1548482400, main: { temp: 90.37 }}
 		];
-		const startAction = {
-			type: RECEIVE_WEATHER_DATA,
+		const startAction : IActionFetchWeatherData = {
+			type: actionTypes.RECEIVE_WEATHER_DATA,
+			text: '',
+			error: null,
 			data: {
 				city,
 				list: [
@@ -67,7 +75,9 @@ describe('app reducer', () => {
 			}
 		};
 		appReducer(undefined, {
-			type: RECEIVE_WEATHER_DATA,
+			type: actionTypes.RECEIVE_WEATHER_DATA,
+			text: '',
+			error: null,
 			data: {
 				city,
 				list: startList

@@ -4,7 +4,7 @@ import { IGridComponentProps } from '../../interfaces/grid';
 import { shallow } from 'enzyme';
 import { WeatherType } from '../../constants/types';
 
-describe('<SearchInput />', () => {
+describe('<Grid />', () => {
 	let props : IGridComponentProps;
 
 	beforeEach(() => {

@@ -1,11 +1,10 @@
+import { Reducer } from 'redux';
 import {
-	REQUEST_WEATHER_DATA,
-	RECEIVE_WEATHER_DATA,
-	WEATHER_DATA_REQUEST_FAILED
+	actionTypes
 } from '../constants';
 import { APP_INITIAL_STATE } from '../constants';
-import { IAppComponentState } from '../interfaces';
-import { IWeather } from '../interfaces/weather';
+import { IAppComponentState } from '../interfaces/app';
+import { IWeather, IActionFetchWeatherData } from '../interfaces/weather';
 
 const inDegrees = (value: number) => {
 	return `${Math.floor(value)}\xB0C`;
@@ -54,25 +53,26 @@ const getUpdatedWeatherState = (currentWeatherState: IWeather[], newWeatherItem:
 	return weatherState;
 };
 
-export const appReducer = (state = APP_INITIAL_STATE, action: any) : IAppComponentState => {
+export const appReducer: Reducer<IAppComponentState, IActionFetchWeatherData> =
+	(state: IAppComponentState = APP_INITIAL_STATE, action: IActionFetchWeatherData) => {
 	switch (action.type) {
-		case REQUEST_WEATHER_DATA:
+		case actionTypes.REQUEST_WEATHER_DATA:
 			return {
 				...state,
 				error: '',
 				loading: true
 			};
-		case RECEIVE_WEATHER_DATA:
+		case actionTypes.RECEIVE_WEATHER_DATA:
 			return {
 				...state,
 				error: '',
 				loading: false,
 				weather: getUpdatedWeatherState(state.weather, parseWeatherData(action.data))
 			};
-		case WEATHER_DATA_REQUEST_FAILED:
+		case actionTypes.WEATHER_DATA_REQUEST_FAILED:
 			return {
 				...state,
-				error: action.data.message,
+				error: action.error.message,
 				loading: false
 			};
 		default:

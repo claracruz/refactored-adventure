@@ -1,6 +1,6 @@
 import React from 'react';
 import { App } from './index';
-import {IAppComponentProps} from '../../interfaces';
+import {IAppComponentProps} from '../../interfaces/app';
 import { IGridComponentProps } from '../../interfaces/grid';
 import { ISearchComponentProps } from '../../interfaces/search';
 import { shallow } from 'enzyme';
