@@ -1,3 +1,5 @@
+import { Action } from 'redux';
+
 export interface IWeather {
 	city?: string;
 	twelveAM?: string;
@@ -6,3 +8,18 @@ export interface IWeather {
 	sixPM?: string;
 }
 
+export interface IActionRequestWeatherData extends Action {
+	text: string
+}
+
+export interface IActionReceiveWeatherData extends Action {
+	data: any;
+}
+
+export interface IActionFetchWeatherDataError extends Action {
+	error: any
+}
+
+export interface IActionFetchWeatherData extends IActionRequestWeatherData, IActionReceiveWeatherData, IActionFetchWeatherDataError {
+	text: string
+}

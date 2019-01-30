@@ -7,8 +7,8 @@ import {
 	fetchWeatherData
 } from '../../actions/app';
 import './index.css';
-import { IAppState } from '../../interfaces';
-import { IAppComponentProps } from '../../interfaces';
+import { IAppState } from '../../interfaces/app';
+import { IAppComponentProps } from '../../interfaces/app';
 import { ISearchComponentProps } from '../../interfaces/search';
 
 const mapStateToProps = (state: IAppState) => {

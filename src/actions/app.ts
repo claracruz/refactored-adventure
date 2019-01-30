@@ -1,47 +1,34 @@
 import axios from 'axios';
 import {
-	REQUEST_WEATHER_DATA,
-	RECEIVE_WEATHER_DATA,
-	WEATHER_DATA_REQUEST_FAILED
+	actionTypes
 } from '../constants';
-import { WeatherType } from '../constants/types';
+import {
+	IActionRequestWeatherData,
+	IActionReceiveWeatherData,
+	IActionFetchWeatherDataError
+} from '../interfaces/weather';
 import {
 	WEATHER_API
 } from '../constants/api';
 
-export interface IRequestWeatherData {
-	type: REQUEST_WEATHER_DATA;
-	data: string;
-}
-
-export interface IReceiveWeatherData {
-	type: RECEIVE_WEATHER_DATA;
-	data: WeatherType;
-}
-
-export interface IWeatherDataRequestFailed {
-	type: WEATHER_DATA_REQUEST_FAILED;
-	data: any;
-}
-
-const requestWeatherData = (data: string) : IRequestWeatherData => {
+const requestWeatherData = (text: string) : IActionRequestWeatherData => {
 	return {
-		type: REQUEST_WEATHER_DATA,
+		type: actionTypes.REQUEST_WEATHER_DATA,
+		text
+	}
+};
+
+const receiveWeatherData = (text: string, data: any) : IActionReceiveWeatherData => {
+	return {
+		type: actionTypes.RECEIVE_WEATHER_DATA,
 		data
 	}
 };
 
-const receiveWeatherData = (text: string, data: object) : IReceiveWeatherData => {
+const weatherDataRequestFailed = (data: any) : IActionFetchWeatherDataError => {
 	return {
-		type: RECEIVE_WEATHER_DATA,
-		data
-	}
-};
-
-const weatherDataRequestFailed = (data: any) : IWeatherDataRequestFailed => {
-	return {
-		type: WEATHER_DATA_REQUEST_FAILED,
-		data: data.response.data
+		type: actionTypes.WEATHER_DATA_REQUEST_FAILED,
+		error: data.response.data
 	}
 };
 
