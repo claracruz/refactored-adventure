@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { Grid } from '../../components/Grid';
 import { SearchInput } from '../../components/SearchInput';
 import { Loading } from '../../components/Loading';
-import {
-	fetchWeatherData
-} from '../../actions/app';
+import { requestWeatherData }  from '../../actions';
+// import { onRequestWeatherData }  from '../../thunks';
 import './index.css';
 import { IAppState } from '../../interfaces/app';
 import { IAppComponentProps } from '../../interfaces/app';
@@ -21,7 +20,8 @@ const mapStateToProps = (state: IAppState) => {
 };
 
 const mapDispatchToProps = (dispatch: any): ISearchComponentProps => ({
-	onSearch: (cityId: string) => dispatch(fetchWeatherData(cityId, 'fetch weather data'))
+	onSearch: (cityId: string) => dispatch(requestWeatherData(cityId))
+	// onSearch: (cityId: string) => dispatch(onRequestWeatherData(cityId))
 });
 
 export class App extends PureComponent<IAppComponentProps> {
