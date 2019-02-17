@@ -8,7 +8,6 @@ import {
 	weatherDataRequestFailed
 } from '../actions';
 import { put, call, takeLatest } from 'redux-saga/effects';
-import { cloneableGenerator } from '@redux-saga/testing-utils';
 import { actionTypes } from '../constants';
 import * as services from '../utils/requests';
 
@@ -23,13 +22,13 @@ describe('On request project list', () => {
 	const city = 'test';
 
 	it('gets the execution context', () => {
-		const generator = cloneableGenerator(onRequestWeatherData)();
+		const generator = onRequestWeatherData();
 		const result = generator.next().value;
 		expect(result).toEqual(takeLatest(actionTypes.REQUEST_WEATHER_DATA, getWeatherData));
 	});
 
 	describe('Fetch data successfully', () => {
-		const generator = cloneableGenerator(getWeatherData)(requestWeatherData(city));
+		const generator = getWeatherData(requestWeatherData(city));
 		let result : any = null;
 
 		it('calls the API', () => {
@@ -51,7 +50,7 @@ describe('On request project list', () => {
 	});
 
 	describe('Throws error on failure', () => {
-		const generator = cloneableGenerator(getWeatherData)(requestWeatherData(city));
+		const generator = getWeatherData(requestWeatherData(city));
 		let result : any = null;
 
 		it('calls the API', () => {
