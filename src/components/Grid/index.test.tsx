@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid } from './index';
 import { IGridComponentProps } from '../../interfaces/grid';
+import { IWeather } from '../../interfaces/weather';
 import { shallow } from 'enzyme';
-import { WeatherType } from '../../constants/types';
 
 describe('<Grid />', () => {
 	let props : IGridComponentProps;
@@ -10,7 +10,7 @@ describe('<Grid />', () => {
 	beforeEach(() => {
 		props = {
 			className: 'grid-class-name',
-			items: [] as WeatherType[]
+			items: [] as IWeather[]
 		};
 	});
 

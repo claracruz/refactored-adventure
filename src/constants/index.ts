@@ -1,5 +1,5 @@
 import { IAppComponentState } from '../interfaces/app';
-import { WeatherType } from './types';
+import { IWeather } from '../interfaces/weather';
 
 export const actionTypes = {
 	REQUEST_WEATHER_DATA: 'REQUEST_WEATHER_DATA',
@@ -10,6 +10,6 @@ export const actionTypes = {
 export const APP_INITIAL_STATE : IAppComponentState = {
 	error: '',
 	loading: false,
-	weather: [] as WeatherType[]
+	weather: [] as IWeather[]
 };
 
