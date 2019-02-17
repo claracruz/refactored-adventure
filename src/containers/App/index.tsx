@@ -4,6 +4,7 @@ import { IAppState } from '../../interfaces/app';
 import { ISearchComponentProps } from '../../interfaces/search';
 import { requestWeatherData }  from '../../actions';
 // import { onRequestWeatherData }  from '../../thunks';
+import { Dispatch, Action } from 'redux';
 
 const mapStateToProps = (state: IAppState) => {
 	const { app } = state;
@@ -14,7 +15,7 @@ const mapStateToProps = (state: IAppState) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch: any): ISearchComponentProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<Action>): ISearchComponentProps => ({
 	onSearch: (cityId: string) => dispatch(requestWeatherData(cityId))
 	// onSearch: (cityId: string) => dispatch(onRequestWeatherData(cityId))
 });

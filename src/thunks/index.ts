@@ -4,9 +4,10 @@ import {
 	weatherDataRequestFailed
 } from '../actions';
 import { fetchWeatherData } from '../utils/requests';
+import {Action, Dispatch} from 'redux';
 
 export const onRequestWeatherData = (cityId: string) => {
-	return (dispatch: any) => {
+	return (dispatch: Dispatch<Action>) => {
 		dispatch(requestWeatherData(cityId));
 		return fetchWeatherData(cityId).then((res: any) =>
 			dispatch(receiveWeatherData(res.data))
