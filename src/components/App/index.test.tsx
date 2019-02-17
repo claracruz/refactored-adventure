@@ -1,12 +1,12 @@
 import React from 'react';
-import { App } from './index';
+import { App } from './';
 import {IAppComponentProps} from '../../interfaces/app';
 import { IGridComponentProps } from '../../interfaces/grid';
 import { ISearchComponentProps } from '../../interfaces/search';
 import { shallow } from 'enzyme';
-import { SearchInput } from '../../components/SearchInput';
-import { Grid } from '../../components/Grid';
-import { Loading } from '../../components/Loading';
+import { SearchInput } from '../SearchInput';
+import { Grid } from '../Grid';
+import { Loading } from '../Loading';
 
 describe('<App />', () => {
 	let props : IAppComponentProps;
@@ -22,19 +22,7 @@ describe('<App />', () => {
 
 	it('renders without crashing', () => {
 		const wrapper = shallow(<App {...props} />);
-		const instance = wrapper.instance() as App;
-		const header = <header className="App-header">
-			<h1>24 hour weather forecast</h1>
-		</header>;
-
-		const section = <section>
-			<SearchInput onSearch={instance.onSearch} />
-			<Grid
-				className="weather-grid"
-				items={props.weather} />
-		</section>;
-		expect(wrapper.contains(header)).toEqual(true);
-		expect(wrapper.contains(section)).toEqual(true);
+		expect(wrapper).toMatchSnapshot();
 	});
 
 	it('renders without crashing in loading mode', () => {
