@@ -14,7 +14,7 @@ describe('app reducer', () => {
 	it('should handle REQUEST_WEATHER_DATA', () => {
 		const startAction : IActionFetchWeatherData = {
 			type: actionTypes.REQUEST_WEATHER_DATA,
-			text: '',
+			city: '',
 			data: {},
 			error: null
 		};
@@ -28,7 +28,7 @@ describe('app reducer', () => {
 	it('should handle RECEIVE_WEATHER_DATA', () => {
 		const startAction: IActionFetchWeatherData = {
 			type: actionTypes.RECEIVE_WEATHER_DATA,
-			text: '',
+			city: '',
 			error: null,
 			data: {
 				city: { name: 'leeds', country: 'GB' },
@@ -61,7 +61,7 @@ describe('app reducer', () => {
 		];
 		const startAction : IActionFetchWeatherData = {
 			type: actionTypes.RECEIVE_WEATHER_DATA,
-			text: '',
+			city: '',
 			error: null,
 			data: {
 				city,
@@ -76,7 +76,7 @@ describe('app reducer', () => {
 		};
 		appReducer(undefined, {
 			type: actionTypes.RECEIVE_WEATHER_DATA,
-			text: '',
+			city: '',
 			error: null,
 			data: {
 				city,
