@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React  from 'react';
 import { Grid } from '../Grid';
 import { SearchInput } from '../SearchInput';
 import { Loading } from '../Loading';
