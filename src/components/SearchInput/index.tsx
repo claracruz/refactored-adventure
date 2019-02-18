@@ -37,13 +37,14 @@ export class SearchInput extends PureComponent<ISearchComponentProps, ISearchCom
 	render() {
 		return (
 			<div className="search-input">
-				<input
-					value={this.state.searchTerm}
-					onKeyPress={this.handleChange}
-					onKeyDown={this.handleKeyDown}
-					onChange={this.handleChange}
-					placeholder="Search a city"
-					type="text" />
+				<label>
+					<input
+						value={this.state.searchTerm}
+						onKeyDown={this.handleKeyDown}
+						onChange={this.handleChange}
+						placeholder="Search a city"
+						type="text" />
+				</label>
 				<button onClick={this.onSubmit}>Search</button>
 			</div>
 		);

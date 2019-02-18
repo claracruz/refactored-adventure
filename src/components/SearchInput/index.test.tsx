@@ -16,26 +16,17 @@ describe('<SearchInput />', () => {
 		const wrapper = shallow(<SearchInput {...props} />);
 		const instance = wrapper.instance() as SearchInput;
 		const searchInput = <div className="search-input">
-			<input
-				value={instance.state.searchTerm}
-				onKeyPress={instance.handleChange}
-				onKeyDown={instance.handleKeyDown}
-				onChange={instance.handleChange}
-				placeholder="Search a city"
-				type="text" />
+			<label>
+				<input
+					value={instance.state.searchTerm}
+					onKeyDown={instance.handleKeyDown}
+					onChange={instance.handleChange}
+					placeholder="Search a city"
+					type="text" />
+			</label>
 			<button onClick={instance.onSubmit}>Search</button>
 		</div>;
 		expect(wrapper.contains(searchInput)).toEqual(true);
-	});
-
-
-	it('should update state with characters on keypress', () => {
-		const wrapper = shallow(<SearchInput {...props} />);
-		const instance = wrapper.instance() as SearchInput;
-		const input = wrapper.find('input');
-		const searchTerm = 'search term';
-		input.simulate('keyPress', {currentTarget: {value: searchTerm}});
-		expect(instance.state.searchTerm).toEqual(searchTerm);
 	});
 
 
@@ -44,7 +35,7 @@ describe('<SearchInput />', () => {
 		const input = wrapper.find('input');
 		const button = wrapper.find('button');
 		const searchTerm = 'search term';
-		input.simulate('keyPress', {currentTarget: {value: searchTerm}});
+		input.simulate('change', {currentTarget: {value: searchTerm}});
 		button.simulate('click');
 		expect(props.onSearch).toBeCalledWith(searchTerm);
 	});
@@ -55,7 +46,7 @@ describe('<SearchInput />', () => {
 		const input = wrapper.find('input');
 		const button = wrapper.find('button');
 		const searchTerm = 'search term';
-		input.simulate('keyPress', {currentTarget: {value: searchTerm}});
+		input.simulate('change', {currentTarget: {value: searchTerm}});
 		button.simulate('click');
 		expect(instance.state.searchTerm).toEqual('');
 	});
