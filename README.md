@@ -12,13 +12,13 @@ import { store } from './stores/thunkStore/';
 // import { store } from './stores/sagaStore';
 ```
 
-* Replace the imports at lines 5 & 6 in src/App/index.tsx with;
+* Replace the imports at lines 5 & 6 in src/containers/App/index.tsx with;
 ```ecmascript
 // import { requestWeatherData }  from '../../actions';
 import { onRequestWeatherData }  from '../../thunks';
 ```
 
-* And at line 18 & 19 also in src/App/index.tsx with;
+* And at line 18 & 19 also in src/containers/App/index.tsx with;
 ```ecmascript
 // onSearch: (cityId: string) => dispatch(requestWeatherData(cityId))
 	onSearch: (cityId: string) => dispatch(onRequestWeatherData(cityId))
