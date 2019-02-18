@@ -15,7 +15,7 @@ import { store } from './stores/thunkStore/';
 * Replace the imports at lines 5 & 6 in src/App/index.tsx with;
 ```ecmascript
 // import { requestWeatherData }  from '../../actions';
-import { requestWeatherData }  from '../../thunks';
+import { onRequestWeatherData }  from '../../thunks';
 ```
 
 * And at line 18 & 19 also in src/App/index.tsx with;
